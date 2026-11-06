@@ -59,7 +59,7 @@ export type Credential = {
 export const profile = {
   name: "Eduardo Silva Morishita",
   shortName: "Eduardo Morishita",
-  handle: "[PREENCHER: domínio/handle da nav, ex.: seunome.dev]",
+  handle: "eduardo.morishita",
   // Sempre: Software Engineer + Full Stack (pedido do Eduardo). Em inglês de propósito:
   // "Engenheiro de Software" em português é título regulado pelo CONFEA/CREA (exige diploma + registro).
   role: "Software Engineer",
@@ -90,7 +90,7 @@ export const profile = {
   links: {
     github: "https://github.com/EduMoridev",
     /** repositório deste portfólio (link "código-fonte" do rodapé) */
-    source: "https://gh.hhj520.top/EduMoridev/EduardoODev",
+    source: "https://github.com/EduMoridev/EduardoODev",
     // GH usa este slug; o CV mostra linkedin.com/in/eduardo-silva-morishita — confirme qual abre o seu perfil
     linkedin: "https://www.linkedin.com/in/eduardo-silva-morishita-268a89316/",
   },
@@ -111,11 +111,13 @@ export const profile = {
 
   /** Agrupado por categoria: IAs de triagem e ATS fazem match por palavra-chave. */
   skills: {
-    "Front-end": ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS", "React Hook Form"],
-    "Back-end": ["Node.js", "Java", "Spring Boot", "APIs REST", "SQL"],
-    Linguagens: ["Python", "C#", "C++"],
-    Ferramentas: ["Git", "GitHub", "Docker", "Vercel", "PowerShell", "Arduino"],
-  } as Record<string, string[]>, // CV + GH + GIT
+    "Front-end": ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS", "shadcn/ui", "HeroUI", "React Hook Form", "Motion", "GSAP"],
+    "Back-end": ["Java", "Spring Boot", "Node.js", "APIs REST", "SQL", "Maven"],
+    Linguagens: ["TypeScript", "JavaScript", "Java", "Python", "C", "C#", "C++", "PowerShell"],
+    "IDEs e IA": ["VS Code", "IntelliJ IDEA", "Cursor", "Antigravity", "Claude Code"],
+    Ferramentas: ["Git", "GitHub", "Docker", "Vercel", "Apidog", "Figma", "Arduino"],
+    "Gestão e métodos": ["Metodologias ágeis", "Trello", "Miro", "Notion"],
+  } as Record<string, string[]>, // CV + GH + GIT + CHAT (lista dada pelo Eduardo: Miro, Cursor, Antigravity, Trello, ágil, Docker, Apidog, Maven) + pastas locais (IntelliJ, VS Code)
 
   softSkills: [
     "Liderança de equipe",
@@ -148,7 +150,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Freelance",
-    title: "Desenvolvedor Front-end",
+    title: "Desenvolvedor Full Stack",
     period: "2026 – atual",
     bullets: [
       "Desenvolvimento de sites institucionais e de produto, da entrevista de requisitos com o cliente ao deploy na Vercel.",
@@ -225,8 +227,9 @@ export const projects: Project[] = [
       "Verificações no build: scripts que validam os dados de serviços e PCs e auditam o contraste das cores antes de publicar.",
       "Efeitos visuais (vidro, surgimento no scroll e fumaça no cursor) com orçamento de desempenho para PCs fracos.",
     ], // REPO + GIT
-    outcome: "[PREENCHER: o site está no ar? link e algum retorno do cliente]",
+    outcome: "Publicado na Vercel e entregue ao cliente.", // verificado: site no ar em 06/11/2026
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "HeroUI", "Motion"],
+    live: "https://usantoss-fps.vercel.app", // GH homepage
     featured: true,
   },
   {
@@ -246,6 +249,55 @@ export const projects: Project[] = [
     repo: "https://github.com/EduMoridev/CalculadoraPenalFronteira",
     logo: "/logos/fronteira.svg", // REPO: FronteiraLogo.tsx
     live: "https://calculadora-penal-fronteira.vercel.app",
+  },
+  {
+    slug: "usantoosfps-scripts",
+    name: "UsantoosFps Scripts",
+    tagline: "Scripts de otimização do Windows, abertos para auditoria",
+    problem:
+      "Scripts .bat rodam como administrador e o Windows avisa ao baixá-los; o cliente precisava distribuí-los de graça sem pedir confiança cega.", // REPO
+    role: "Organizei e publiquei o repositório do cliente: scripts, documentação e verificação.", // GH
+    highlights: [
+      "14 scripts de manutenção (limpeza, plano de energia, DISM/SFC, TRIM, diagnóstico, backup e ponto de restauração).",
+      "Hash SHA-256 de cada arquivo publicado e script PowerShell que gera e confere os hashes.",
+      "Política de segurança (SECURITY.md), templates de issue e .gitattributes que garante finais de linha CRLF nos .bat.",
+    ], // REPO
+    outcome: "Repositório público, usado como fonte auditável dos downloads gratuitos do site.", // REPO README
+    stack: ["Batch", "PowerShell", "GitHub"],
+    repo: "https://github.com/EduMoridev/UsantossFps-scripts",
+  },
+  {
+    slug: "criptografia-sequencias",
+    name: "Criptografia com Sequências",
+    tagline: "Cifra de César em duas camadas, em C (faculdade)",
+    problem:
+      "Atividade avaliativa de Algoritmos e Pensamento Computacional: criptografar palavras combinando Cifra de César com sequências numéricas.", // REPO
+    role: "Trabalho em grupo de 5 integrantes; publiquei o código e a documentação.", // REPO + GH
+    highlights: [
+      "Segunda camada de deslocamento por PA, PG, Fibonacci ou números primos, escolhida pelo usuário.",
+      "Validação de entrada e mod 26 corrigido para números negativos (o % do C pode devolver negativo).",
+      "Log de cada execução em arquivo, com data, entrada, saída e termos da sequência.",
+      "O grupo encontrou e documentou uma inconsistência entre o exemplo do enunciado e a fórmula do próprio enunciado.",
+    ], // REPO
+    outcome: "Entregue e documentado, com exemplo de execução passo a passo.", // REPO
+    stack: ["C"],
+    repo: "https://github.com/EduMoridev/caesar-sequence-cipher",
+  },
+  {
+    slug: "ordenacao-arquivos",
+    name: "Ordenação + Arquivos em C",
+    tagline: "Algoritmos de ordenação com leitura e gravação de arquivos (faculdade)",
+    problem:
+      "Atividade avaliativa: gerar dados desordenados em arquivo, ordenar com o algoritmo escolhido e salvar o resultado sem alterar o original.", // REPO
+    role: "Publiquei o código e a documentação técnica.", // GH
+    highlights: [
+      "Bubble, Insertion, Selection, Merge e Quick Sort no mesmo programa, escolhidos pelo menu.",
+      "Arquivo original preservado; resultado em arquivo separado, regravado a cada ordenação.",
+      "Código em C89 que compila sem nenhum aviso com -Wall -Wextra -pedantic, no Linux e no Windows.",
+    ], // REPO documentacao.txt
+    outcome: "Entregue com documentação de cada função e dos arquivos gerados.", // REPO
+    stack: ["C"],
+    repo: "https://github.com/EduMoridev/OrdenacaoDeArquivos-C",
   },
 ];
 

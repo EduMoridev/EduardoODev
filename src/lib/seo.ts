@@ -1,6 +1,13 @@
 import { certificates, experience, isFilled, profile, projects } from "@/content/profile";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+/**
+ * URL pública do site. Ordem: variável manual → domínio de produção que a Vercel injeta
+ * sozinha no build → domínio atual. Antes caía em localhost e o canonical/OG/sitemap
+ * publicados apontavam para localhost:3000.
+ */
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://eduardo-morishita-dev.vercel.app");
 
 const clean = <T,>(arr: (T | false | undefined)[]) => arr.filter(Boolean) as T[];
 const filled = (v?: string) => (isFilled(v) ? v : undefined);

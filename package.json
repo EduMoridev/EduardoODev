@@ -1,0 +1,35 @@
+{
+  "name": "about-me",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "check": "node -e \"const l=require('fs').readFileSync('src/content/profile.ts','utf8').split('\\n').map((t,i)=>[i+1,t]).filter(([,t])=>t.includes('PREENCHER'));l.forEach(([n,t])=>console.log(n+': '+t.trim()));console.log(l.length+' placeholders pendentes')\""
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/unbounded": "^5.3.0",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "@react-three/rapier": "^2.2.0",
+    "framer-motion": "^14.9.1",
+    "lucide-react": "^1.69.0",
+    "meshline": "^3.3.1",
+    "next": "^16.4.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.4",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.187.0",
+    "tailwindcss": "^4.3.4",
+    "typescript": "^5.9.3"
+  }
+}

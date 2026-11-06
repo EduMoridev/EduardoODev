@@ -34,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
+          //test
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()) }}
         />
         {children}

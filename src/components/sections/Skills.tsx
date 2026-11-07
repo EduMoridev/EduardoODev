@@ -5,7 +5,7 @@ import { profile } from "@/content/profile";
 
 /** Categorias do portfólio antigo, agora com o logo de cada tecnologia e o hover da versão do vídeo. */
 export const Skills = () => (
-  <section id="stack" aria-labelledby="stack-title" className="flex min-h-screen scroll-mt-16 items-center px-8 py-24 md:px-16 lg:px-24">
+  <section id="stack" aria-labelledby="stack-title" className="scroll-mt-16 px-8 py-16 md:px-16 md:py-20 lg:px-24">
     <div className="w-full max-w-6xl">
       <SectionHeader n="03" label="Stack" id="stack-title" title="Stack &" muted="ferramentas." />
       <div className="grid gap-px md:grid-cols-2 xl:grid-cols-3">

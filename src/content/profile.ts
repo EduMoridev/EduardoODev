@@ -74,6 +74,8 @@ export const profile = {
     "React · Next.js · TypeScript · Java",
   ],
   /** Frase de 1 linha usada no hero, OG e por IAs de triagem. */
+  // título do Hero em 3 linhas (a do meio fica em cream-dim)
+  heroTitle: ["Construo", "produtos web", "do front ao back-end."] as const,
   headline:
     "Software Engineer e desenvolvedor full stack, cofundador da Kronos. Interfaces em React, Next.js e TypeScript; back-end com Java e Spring Boot.", // CHAT + CV + GH
   /** Bio em 1ª pessoa — escrita a partir do CV; revise o tom. */
@@ -130,7 +132,7 @@ export const profile = {
     "Aprendizado rápido e autonomia",
   ], // CV
 
-  languages: ["Português (nativo)", "Inglês (Fluente)", "Espanhol (básico)", "Francês (iniciante)"], // CV
+  languages: ["Português (nativo)", "Inglês (intermediário — B2)", "Espanhol (básico)", "Francês (iniciante)"], // CV
 };
 
 export const experience: Experience[] = [

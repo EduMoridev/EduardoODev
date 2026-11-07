@@ -25,7 +25,7 @@ export const Contact = () => {
   ];
   const action = "glass flex items-center gap-4 border border-cream/5 p-6 text-sm text-cream transition-colors duration-200 hover:border-cream/30";
   return (
-    <section id="contato" aria-labelledby="contato-title" className="flex min-h-screen scroll-mt-16 items-center px-8 py-24 md:px-16 lg:px-24">
+    <section id="contato" aria-labelledby="contato-title" className="scroll-mt-16 px-8 py-16 md:px-16 md:py-20 lg:px-24">
       <div className="w-full max-w-5xl">
         <SectionHeader n="06" label="Contato" id="contato-title" title="Vamos" muted="conversar." />
         <div className="grid items-start gap-16 md:grid-cols-2">

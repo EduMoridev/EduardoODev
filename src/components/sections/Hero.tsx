@@ -1,14 +1,15 @@
+import { Fragment } from "react";
 import { HeroBadge } from "@/components/HeroBadge";
 import { Reveal } from "@/components/Reveal";
 import { profile } from "@/content/profile";
 
-/** Hero do portfólio antigo ("Building digital experiences.") + crachá 3D à direita. */
+/** Hero do portfólio antigo (título agora vem de profile.heroTitle) + crachá 3D à direita. */
 export const Hero = () => {
   const strip = ["Next.js", "React", "TypeScript", "Java", "Spring Boot"];
   return (
     <section id="inicio" aria-labelledby="hero-title" className="relative flex min-h-screen items-center px-8 md:px-16 lg:px-24">
       <div className="grid w-full items-center gap-10 pt-16 lg:grid-cols-1">
-        <div className="relative z-10 max-w-xl">
+        <div className="relative z-10 max-w-2xl">
           <Reveal>
             <p className="mb-6 font-mono text-sm uppercase tracking-[0.3em] text-cream">
               {profile.role} · {profile.roleSecondary}
@@ -16,11 +17,14 @@ export const Hero = () => {
           </Reveal>
           <Reveal delay={100}>
             <h1 id="hero-title" className="mb-6 text-5xl font-bold leading-tight text-cream md:text-7xl">
-              Building
+              {profile.heroTitle[0]}
               <br />
-              <span className="text-cream-dim">digital</span>
+              <span className="text-cream-dim">{profile.heroTitle[1]}</span>
               <br />
-              experiences.
+              {/* palavras com hífen não quebram no meio ("back-end") */}
+              {profile.heroTitle[2].split(" ").map((w, i) => (
+                <Fragment key={i}>{i > 0 && " "}<span className="whitespace-nowrap">{w}</span></Fragment>
+              ))}
               <span className="sr-only"> — {profile.name}, {profile.roleFull}</span>
             </h1>
           </Reveal>

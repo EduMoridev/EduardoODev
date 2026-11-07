@@ -5,7 +5,7 @@ import { experience } from "@/content/profile";
 
 /** Experiência no formato de linhas do portfólio antigo (mesma "casca" da lista de projetos). */
 export const Experience = () => (
-  <section id="experiencia" aria-labelledby="exp-title" className="flex min-h-screen scroll-mt-16 items-center px-8 py-24 md:px-16 lg:px-24">
+  <section id="experiencia" aria-labelledby="exp-title" className="scroll-mt-16 px-8 py-16 md:px-16 md:py-20 lg:px-24">
     <div className="w-full max-w-5xl">
       <SectionHeader n="02" label="Experiência" id="exp-title" title="Onde eu" muted="já trabalhei." />
       <ol className="space-y-px">

@@ -7,7 +7,7 @@ import { profile } from "@/content/profile";
 import { getMotionLevel } from "@/lib/motion/level";
 
 /**
- * Tela "Welcome" do vídeo, mais curta: 1,6 s, 1x por sessão, pula com clique/tecla.
+ * Tela "Welcome" do vídeo, mais curta: ~1,4 s no total (1 s na tela + 0,4 s de saída), 1x por sessão, pula com clique/tecla.
  * É overlay — o conteúdo já está no HTML por baixo (IA/crawler não esperam nada).
  */
 export function Intro() {
@@ -21,11 +21,11 @@ export function Intro() {
     setShow(true);
   }, []);
 
-  // 2) enquanto aberta: fecha em 1,6 s ou no primeiro clique/tecla, e só então marca como vista.
+  // 2) enquanto aberta: fecha em 1 s ou no primeiro clique/tecla, e só então marca como vista.
   useEffect(() => {
     if (!show) return;
     const close = () => { sessionStorage.setItem("intro-seen", "1"); setShow(false); };
-    const id = setTimeout(close, 1600);
+    const id = setTimeout(close, 1000);
     window.addEventListener("keydown", close, { once: true });
     window.addEventListener("pointerdown", close, { once: true });
     return () => {
@@ -42,7 +42,7 @@ export function Intro() {
           key="intro"
           className="fixed inset-0 z-[100] grid place-items-center bg-navy-deep"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.5 } }}
+          exit={{ opacity: 0, transition: { duration: 0.4 } }}
           aria-hidden
         >
           <div className="text-center">
@@ -51,11 +51,11 @@ export function Intro() {
               <Code2 className="size-5" /><User className="size-5" /><Globe className="size-5" />
             </motion.div>
             <motion.p className="font-display text-2xl font-bold sm:text-4xl"
-              initial={{ opacity: 0, filter: "blur(8px)" }} animate={{ opacity: 1, filter: "blur(0px)" }} transition={{ delay: 0.15, duration: 0.6 }}>
+              initial={{ opacity: 0, filter: "blur(8px)" }} animate={{ opacity: 1, filter: "blur(0px)" }} transition={{ delay: 0.1, duration: 0.5 }}>
               {profile.shortName}
             </motion.p>
             <motion.p className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-cream-mute"
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}>
               {profile.role} · {profile.roleSecondary}
             </motion.p>
           </div>

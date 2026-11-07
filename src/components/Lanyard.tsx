@@ -72,12 +72,13 @@ declare module "@react-three/fiber" {
 const NAVY = "#14213D";
 const CREAM = "#F4EDE0";
 
-export default function Lanyard() {
+/** `onReady`: chamado no 1º quadro com a foto já desenhada no cartão (para tirar o skeleton). */
+export default function Lanyard({ onReady }: { onReady?: () => void }) {
   return (
-    <Canvas camera={{ position: [0, 0, 13], fov: 25 }} gl={{ alpha: true, antialias: true }} dpr={[1, 2]}>
+    <Canvas camera={{ position: [0, 0, 11], fov: 25 }} gl={{ alpha: true, antialias: true }} dpr={[1, 2]}>
       <ambientLight intensity={Math.PI} />
       <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-        <Band />
+        <Band onReady={onReady} />
       </Physics>
       <Environment blur={0.75}>
         <Lightformer intensity={2} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
@@ -154,6 +155,7 @@ function drawCard(g: CanvasRenderingContext2D, W: number, H: number, photo: HTML
 }
 
 function useCardTexture() {
+  const [ready, setReady] = useState(false);
   const tex = useMemo(() => {
     const c = document.createElement("canvas");
     c.width = 640; c.height = 900;
@@ -171,10 +173,11 @@ function useCardTexture() {
       const c = tex.image as HTMLCanvasElement;
       drawCard(c.getContext("2d")!, c.width, c.height, photo, logo);
       tex.needsUpdate = true;
+      setReady(true);
     });
   }, [tex]);
 
-  return tex;
+  return [tex, ready] as const;
 }
 
 function useBandTexture() {
@@ -195,7 +198,8 @@ function useBandTexture() {
 
 /* ---------- física ---------- */
 
-function Band({ maxSpeed = 50, minSpeed = 10 }) {
+function Band({ maxSpeed = 50, minSpeed = 10, onReady }: { maxSpeed?: number; minSpeed?: number; onReady?: () => void }) {
+  const announced = useRef(false);
   const band = useRef<THREE.Mesh<StableMeshLineGeometry>>(null);
   const fixed = useRef<RapierRigidBody>(null!);
   const j1 = useRef<RapierRigidBody>(null!);
@@ -214,7 +218,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   const [dragged, drag] = useState<false | THREE.Vector3>(false);
   const [hovered, hover] = useState(false);
 
-  const cardTex = useCardTexture();
+  const [cardTex, cardReady] = useCardTexture();
   const bandTex = useBandTexture();
 
   const segment: RigidBodyProps = { type: "dynamic", canSleep: true, colliders: false, angularDamping: 2, linearDamping: 2 };
@@ -231,6 +235,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   }, [hovered, dragged]);
 
   useFrame((state, rawDelta) => {
+    if (cardReady && !announced.current) { announced.current = true; onReady?.(); }
     // após scroll longo/aba em background o delta explode e o lerp extrapola
     const delta = Math.min(rawDelta, 1 / 30);
     if (dragged) {

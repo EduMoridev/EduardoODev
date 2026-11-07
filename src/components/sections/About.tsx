@@ -14,7 +14,7 @@ export const About = () => {
     { label: "Idiomas", value: profile.languages.join(" · ") },
   ];
   return (
-    <section id="sobre" aria-labelledby="sobre-title" className="flex min-h-screen scroll-mt-16 items-center px-8 py-24 md:px-16 lg:px-24">
+    <section id="sobre" aria-labelledby="sobre-title" className="scroll-mt-16 px-8 py-16 md:px-16 md:py-20 lg:px-24">
       <div className="w-full max-w-5xl">
         <SectionHeader n="01" label="Sobre" id="sobre-title" title="Código limpo," muted="soluções reais." />
         <div className="grid items-start gap-16 md:grid-cols-2">

@@ -5,7 +5,7 @@ import { certificates } from "@/content/profile";
 
 /** Cards de certificados do portfólio antigo; cursos sem certificado aparecem marcados como tal. */
 export const Certificates = () => (
-  <section id="certificados" aria-labelledby="cert-title" className="flex min-h-screen scroll-mt-16 items-center px-8 py-24 md:px-16 lg:px-24">
+  <section id="certificados" aria-labelledby="cert-title" className="scroll-mt-16 px-8 py-16 md:px-16 md:py-20 lg:px-24">
     <div className="w-full max-w-5xl">
       <SectionHeader n="05" label="Certificados" id="cert-title" title="Cursos &" muted="certificações." />
       <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3">

@@ -35,23 +35,25 @@ function StaticBadge() {
   );
 }
 
-export function HeroBadge() {
+/** `staticOnly`: instância do mobile/tablet, que nunca carrega o 3D. */
+export function HeroBadge({ staticOnly = false }: { staticOnly?: boolean }) {
   const [use3d, setUse3d] = useState(false);
 
   useEffect(() => {
     // 3D só em desktop com nível "full" (máquina fraca/toque/reduced-motion → crachá estático)
+    if (staticOnly) return;
     const ok = window.matchMedia("(min-width: 1024px)").matches && getMotionLevel() === "full";
     if (!ok) return;
     // espera as fontes para a textura do cartão sair com a tipografia certa
     document.fonts.ready.then(() => setUse3d(true));
-  }, []);
+  }, [staticOnly]);
 
   return (
-    <div className="relative h-[500px] w-full sm:h-[540px] lg:h-full">
+    <div className="relative h-full w-full">
       {use3d ? (
         <>
           <div className="absolute inset-0"><Lanyard /></div>
-          <p className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-navy/80 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-cream-mute backdrop-blur-sm">
+          <p className="pointer-events-none absolute bottom-[12%] left-1/2 -translate-x-1/2 rounded-full bg-navy/80 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-cream-mute backdrop-blur-sm">
             arraste o crachá
           </p>
         </>

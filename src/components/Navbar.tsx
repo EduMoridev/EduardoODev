@@ -1,5 +1,6 @@
 "use client";
 
+import { BrandMark } from "@/components/BrandMark";
 import { FileText } from "lucide-react";
 import { useEffect, useState } from "react";
 import { profile } from "@/content/profile";
@@ -34,7 +35,7 @@ export const Navbar = () => {
     >
       <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-8">
         <a href="#inicio" className="group flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center bg-cream text-xs font-bold text-navy">▶</span>
+          <BrandMark className="size-8 text-cream transition-transform duration-300 group-hover:scale-105" />
           <span className="text-sm font-bold tracking-widest text-cream">{profile.shortName.split(" ")[0].toUpperCase()}</span>
         </a>
 

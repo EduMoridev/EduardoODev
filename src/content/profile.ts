@@ -130,7 +130,7 @@ export const profile = {
     "Aprendizado rápido e autonomia",
   ], // CV
 
-  languages: ["Português (nativo)", "Inglês (intermediário — B2)", "Espanhol (básico)", "Francês (iniciante)"], // CV
+  languages: ["Português (nativo)", "Inglês (Fluente)", "Espanhol (básico)", "Francês (iniciante)"], // CV
 };
 
 export const experience: Experience[] = [

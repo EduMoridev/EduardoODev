@@ -4,11 +4,11 @@ import { profile } from "@/content/profile";
 
 /** Hero do portfólio antigo ("Building digital experiences.") + crachá 3D à direita. */
 export const Hero = () => {
-  const strip = [...profile.skills["Front-end"].slice(1, 3), "TypeScript", "Java", "Spring Boot"];
+  const strip = ["Next.js", "React", "TypeScript", "Java", "Spring Boot"];
   return (
     <section id="inicio" aria-labelledby="hero-title" className="relative flex min-h-screen items-center px-8 md:px-16 lg:px-24">
-      <div className="grid w-full items-center gap-10 pt-16 lg:grid-cols-[1fr_minmax(0,520px)]">
-        <div className="max-w-xl">
+      <div className="grid w-full items-center gap-10 pt-16 lg:grid-cols-1">
+        <div className="relative z-10 max-w-xl">
           <Reveal>
             <p className="mb-6 font-mono text-sm uppercase tracking-[0.3em] text-cream">
               {profile.role} · {profile.roleSecondary}
@@ -41,6 +41,14 @@ export const Hero = () => {
             </div>
           </Reveal>
         </div>
+        {/* mobile/tablet: crachá estático abaixo do texto */}
+        <div className="h-[500px] sm:h-[540px] lg:hidden">
+          <HeroBadge staticOnly />
+        </div>
+      </div>
+
+      {/* desktop: o crachá ocupa toda a área livre à direita e o cordão desce do topo da tela */}
+      <div className="absolute inset-y-0 right-16 left-[max(40rem,46%)] hidden lg:block">
         <HeroBadge />
       </div>
 

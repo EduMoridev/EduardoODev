@@ -23,7 +23,13 @@ import {
   type RigidBodyProps,
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import { experience, profile } from "@/content/profile";
+
+// mesmas fontes do site (Geist); a textura é desenhada em <canvas>
+const SANS = GeistSans.style.fontFamily;
+const MONO = GeistMono.style.fontFamily;
 
 /**
  * O MeshLine usa o próprio ponto como "vizinho" nas pontas da linha e o shader compara
@@ -110,9 +116,9 @@ function drawCard(g: CanvasRenderingContext2D, W: number, H: number, photo: HTML
   let x = 48;
   if (logo) { g.drawImage(logo, 44, 41, 68, 68); x = 132; }
   g.fillStyle = CREAM;
-  g.font = "600 26px 'JetBrains Mono Variable', monospace";
+  g.font = `600 26px ${MONO}`;
   g.fillText(logo ? "CO-FOUNDER" : "PORTFOLIO", x, 72);
-  g.font = "500 22px 'JetBrains Mono Variable', monospace";
+  g.font = `500 22px ${MONO}`;
   g.globalAlpha = 0.7; g.fillText(logo ? "@ kronos" : "", x, 104); g.globalAlpha = 1;
   g.beginPath(); g.arc(W - 70, 75, 14, 0, Math.PI * 2); g.fill(); // furo do clip
 
@@ -127,23 +133,23 @@ function drawCard(g: CanvasRenderingContext2D, W: number, H: number, photo: HTML
   } else {
     const initials = profile.shortName.split(" ").map((w) => w[0]).join("").slice(0, 2);
     g.fillStyle = CREAM; g.textAlign = "center";
-    g.font = "700 120px 'Unbounded Variable', sans-serif";
+    g.font = `700 120px ${SANS}`;
     g.fillText(initials, cx, cy + 45);
   }
   g.restore();
 
   // nome e cargo
   g.textAlign = "center"; g.fillStyle = NAVY;
-  g.font = "700 50px 'Unbounded Variable', sans-serif";
+  g.font = `700 50px ${SANS}`;
   profile.shortName.split(" ").forEach((w, i) => g.fillText(w, W / 2, 610 + i * 60));
-  g.font = "600 30px 'Inter Variable', sans-serif";
+  g.font = `600 30px ${SANS}`;
   g.fillText(profile.role, W / 2, 742);
-  g.font = "500 24px 'Inter Variable', sans-serif";
+  g.font = `500 24px ${SANS}`;
   g.globalAlpha = 0.75; g.fillText(profile.roleSecondary, W / 2, 782); g.globalAlpha = 1;
 
   // rodapé tipo crachá
   g.fillStyle = NAVY; g.fillRect(0, H - 70, W, 70);
-  g.fillStyle = CREAM; g.font = "500 22px 'JetBrains Mono Variable', monospace";
+  g.fillStyle = CREAM; g.font = `500 22px ${MONO}`;
   g.fillText(profile.links.github.replace("https://", ""), W / 2, H - 27);
 }
 
@@ -177,7 +183,7 @@ function useBandTexture() {
     c.width = 1024; c.height = 64;
     const g = c.getContext("2d")!;
     g.fillStyle = CREAM; g.fillRect(0, 0, c.width, c.height);
-    g.fillStyle = NAVY; g.font = "600 30px 'JetBrains Mono Variable', monospace";
+    g.fillStyle = NAVY; g.font = `600 30px ${MONO}`;
     g.textBaseline = "middle";
     g.fillText(`${profile.shortName.toUpperCase()}  •  ${profile.role.toUpperCase()}  •  FULL STACK  •`, 16, 34);
     const t = new THREE.CanvasTexture(c);

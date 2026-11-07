@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@import "@fontsource-variable/unbounded";
-@import "@fontsource-variable/inter";
-@import "@fontsource-variable/jetbrains-mono";
 
 /*
  * Paleta: Navy #14213D + Cream #F4EDE0.
@@ -20,9 +17,10 @@
   --color-cream-dim: #c9c3b8; /* texto secundário (contraste AA sobre navy) */
   --color-cream-mute: #aeaaa3; /* labels pequenas — AA com margem (4,97:1) mesmo sob o feixe de luz */
 
-  --font-display: "Unbounded Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  /* Geist, como no portfólio antigo (variáveis vêm do layout) */
+  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 html {
@@ -34,6 +32,12 @@ html {
 body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Grade de pontos do portfólio antigo, em cream */
+.dot-grid {
+  background-image: radial-gradient(circle, rgb(244 237 224 / 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 /* Grade sutil do vídeo, em cream a 5% sobre navy */

@@ -33,6 +33,8 @@ export type Project = {
   image?: string;
   logo?: string;
   featured?: boolean;
+  /** selo da linha do projeto, como no portfólio antigo */
+  status: "No ar" | "Publicado" | "Em desenvolvimento" | "Concluído";
 };
 
 export type Experience = {
@@ -176,6 +178,7 @@ export const experience: Experience[] = [
 export const projects: Project[] = [
   {
     slug: "kronos",
+    status: "Em desenvolvimento",
     name: "Kronos",
     tagline: "Plataforma de agendamentos e reuniões",
     problem:
@@ -195,6 +198,7 @@ export const projects: Project[] = [
   },
   {
     slug: "esm-tweaks",
+    status: "Publicado",
     name: "ESM Tweaks",
     tagline: "Otimizador de Windows para jogos, reversível e honesto",
     problem:
@@ -216,6 +220,7 @@ export const projects: Project[] = [
   },
   {
     slug: "usantoosfps",
+    status: "No ar",
     name: "UsantoosFps",
     tagline: "Site institucional para serviço de otimização de PC para jogos",
     problem:
@@ -234,6 +239,7 @@ export const projects: Project[] = [
   },
   {
     slug: "calculadora-penal",
+    status: "No ar",
     name: "Calculadora Penal Fronteira",
     tagline: "Calculadora de penas para servidor de roleplay (GTA RP)",
     problem:
@@ -252,6 +258,7 @@ export const projects: Project[] = [
   },
   {
     slug: "usantoosfps-scripts",
+    status: "Publicado",
     name: "UsantoosFps Scripts",
     tagline: "Scripts de otimização do Windows, abertos para auditoria",
     problem:
@@ -268,6 +275,7 @@ export const projects: Project[] = [
   },
   {
     slug: "criptografia-sequencias",
+    status: "Concluído",
     name: "Criptografia com Sequências",
     tagline: "Cifra de César em duas camadas, em C (faculdade)",
     problem:
@@ -285,6 +293,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ordenacao-arquivos",
+    status: "Concluído",
     name: "Ordenação + Arquivos em C",
     tagline: "Algoritmos de ordenação com leitura e gravação de arquivos (faculdade)",
     problem:
@@ -302,6 +311,8 @@ export const projects: Project[] = [
 ];
 
 export const certificates: Credential[] = [
+  { name: "Agile Explorer", issuer: "IBM", year: "2025", certificate: true, url: "https://www.credly.com/badges/bb6c90fa-b226-4c8a-91ac-4ce9608488e7/linked_in_profile" }, // PORTFÓLIO ANTIGO
+  { name: "Lógica de Programação", issuer: "Fundação Bradesco — Escola Virtual", year: "2026", certificate: true, url: "https://lms.ev.org.br/mpls/Web/Lms/Student/PrintCertificateContent.aspx?uid=14149917&p=1SaU3syvf27MofustyHwZnOrNqfnRqa4" }, // PORTFÓLIO ANTIGO
   { name: "Linguagem de Programação Python – Básico", issuer: "Fundação Bradesco — Escola Virtual", year: "2026", certificate: true }, // CV
   { name: "IA na Prática: Como Dados Bem Estruturados Fazem a Diferença", issuer: "Fundação Bradesco — Escola Virtual", year: "2026", certificate: true }, // CV
   { name: "Java com Spring Boot", issuer: "Rocketseat", certificate: false }, // CHAT

@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { profile } from "@/content/profile";
 import { personJsonLd, SITE_URL } from "@/lib/seo";
@@ -25,7 +27,7 @@ export const viewport: Viewport = { themeColor: "#030712", colorScheme: "dark" }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         {/* decide o nível de movimento antes da 1ª pintura (sem flash de conteúdo) */}
         <script dangerouslySetInnerHTML={{ __html: MOTION_SCRIPT }} />
@@ -34,7 +36,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
-          //test
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()) }}
         />
         {children}
